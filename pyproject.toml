@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "tic-tac-toe-bench"
+version = "0.1.0"
+description = ""
+authors = ["lberglund <lberglund@rand.org>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+inspect-ai = "^0.3.15"
+pandas = "numpy"
+openai = "^1.35.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
