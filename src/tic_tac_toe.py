@@ -44,6 +44,13 @@ class TicTacToe:
             if i < 6:
                 print('---------')
 
+    def board_to_string(self) -> str:
+        rows: List[str] = [
+            ' | '.join(self.board[i:i+3])
+            for i in range(0, 9, 3)
+        ]
+        return '\n---------\n'.join(rows)
+
 class Bot(ABC):
     def __init__(self, player: str) -> None:
         self.player: str = player
@@ -92,7 +99,7 @@ class TicTacToeBot(Bot):
             else:
                 return -1, None
 
-        best_score: int = float('-inf') if player == self.player else float('inf') # type: ignore
+        best_score: int = float('-inf') if player == self.player else float('inf')
         best_move: Optional[int] = None
 
         for move in range(9):
@@ -138,7 +145,7 @@ if __name__ == '__main__':
         players: Dict[str, Union[str, Bot]] = {'X': player_x, 'O': player_o}
 
         while not game.winner:
-            game.print_board()
+            print(game.board_to_string())  # Use the new method here
             current_player: Union[str, Bot] = players[game.current_player]
             
             if isinstance(current_player, Bot):
@@ -159,7 +166,7 @@ if __name__ == '__main__':
             
             game.make_move(move)
 
-        game.print_board()
+        print(game.board_to_string())  # Use the new method here
         if game.winner == 'Tie':
             print("It's a tie!")
         else:
